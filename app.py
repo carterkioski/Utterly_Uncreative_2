@@ -1,5 +1,5 @@
 #import dependencies
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, request
 
 import os
 
@@ -14,11 +14,11 @@ def home_page():
 
 @app.route('/diagnose', methods = ['POST', 'GET'])
 def diagnose():
-	if request.method == 'POST':
+    if request.method == 'POST':
         form_data = request.form
         #here take form data , clean it up, pass it through the two models
         #result = responses from models
-    	return render_template('diagnose.html', result=result)
+        return render_template('diagnose.html', result=True)
     return render_template('diagnose.html')
 
 @app.route('/how-this-works')

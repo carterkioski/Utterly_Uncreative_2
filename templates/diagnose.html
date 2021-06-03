@@ -54,6 +54,17 @@
         </header>
       </div>
 
+
+      <form action="/diagnose" method = "POST">
+    <p>Name <input type = "text" name = "Name" /></p>
+    <p>City <input type = "text" name = "City" /></p>
+    <p>Country <input type = "text" name = "Country" /></p>
+    <p><input type = "submit" value = "Submit" /></p>
+  </form>
+  <p>
+  <h2> Result</h2>
+  <p> {{result}}</p>
+  </p>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
