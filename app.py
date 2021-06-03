@@ -12,8 +12,13 @@ app = Flask(__name__)
 def home_page():
     return render_template('index.html')
 
-@app.route('/diagnose')
+@app.route('/diagnose', methods = ['POST', 'GET'])
 def diagnose():
+	if request.method == 'POST':
+        form_data = request.form
+        #here take form data , clean it up, pass it through the two models
+        #result = responses from models
+    	return render_template('diagnose.html', result=result)
     return render_template('diagnose.html')
 
 @app.route('/how-this-works')
