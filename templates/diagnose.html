@@ -8,7 +8,8 @@
     <!-- Bootstrap CSS -->
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    
     <title>Hello, world!</title>
   </head>
   <body>
@@ -48,16 +49,15 @@
         <header class="pb-3 mb-4 border-bottom">
           <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
             <span class="fs-1 fw-bold  ">Diabetes Diagnosis Center </span>
-            
-    
           </a>
         </header>
       </div>
-    <div class="container-fluid" >
-      <h4>Plese fill in the following information for a diagnosis</h4>
-
-        <form class="row g-3" action="/diagnose" method = "POST">
-          <div class="col-md-6">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h4>Plese fill in the following information for a diagnose</h4>
+          <form class="row g-3" action="/diagnose" method = "POST">
+            <div class="col-md-9">
             <div class="input-group mb-3">
               <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
               <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
@@ -94,6 +94,9 @@
               <button type="submit" class="btn btn-primary">Submit</button>
           </div>
         </form>
+        </div>
+      </div>
+    </div>
 
         <h2>Result:</h2>
         <p>{{result}}</p>
