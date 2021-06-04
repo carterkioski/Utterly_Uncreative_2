@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="styles.css">
     
-    <title>Hello, world!</title>
+    <title>Diabetes Diagnosis Center</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -48,7 +48,7 @@
     <div class="container py-12">
         <header class="pb-3 mb-4 border-bottom">
           <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-            <span class="fs-1 fw-bold  ">Diabetes Diagnosis Center </span>
+            <span class="fs-1 fw-bold  ">Diabetes Diagnosis Center</span>
           </a>
         </header>
       </div>
@@ -61,36 +61,36 @@
           <form class="row g-3" action="/diagnose" method = "POST">
             <div class="col-md-9">
             <div class="input-group mb-3">
-              <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
-              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-            </div>
-            <div class="input-group mb-3">
               <span class="input-group-text" id="inputGroup-sizing-default">Age</span>
-              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="Age" value=0>
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text" id="inputGroup-sizing-default">BMI</span>
-              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="BMI" value=0>
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="inputGroup-sizing-default">Skin Thickness</span>
+              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="SkinThickness" value=0>
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text" id="inputGroup-sizing-default">Insulin</span>
-              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="Insulin" value=0>
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text" id="inputGroup-sizing-default">Glucose</span>
-              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="Glucose" value=0>
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text" id="inputGroup-sizing-default">Blood Pressure</span>
-              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="BloodPressure" value=0>
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text" id="inputGroup-sizing-default">DiabetesPedigreeFunction</span>
-              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="DiabetesPedigreeFunction" value=0>
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text" id="inputGroup-sizing-default">Pregnancies</span>
-              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name='Pregnancies' value=0>
             </div>
             <div class="col-12">
               <button type="submit" class="btn btn-primary">Submit</button>
@@ -100,8 +100,10 @@
       </div>
         <div class="col-md-4">
           <br>
-          <h2>Result:</h2>
-          <p>{{result}}</p>
+          <h2>Results:</h2>
+          {% if diabetes_result < 2 %}
+          <p>Our model predicts that you do {{(1-diabetes_result) * 'NOT'}} have diabetis!</p>
+          {% endif %}
         </div>
       </div>
     </div>

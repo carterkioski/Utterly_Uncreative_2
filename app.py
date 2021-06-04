@@ -21,14 +21,14 @@ def home_page():
 
 @app.route('/diagnose', methods = ['POST', 'GET'])
 def diagnose():
+    diabetes_result = 2
     if request.method == 'POST':
         form_data = request.form
         #Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age
-        result  = bool(diabetes_model.predict(diabetes_scaler.transform([[request.form['Pregnancies'],request.form['Glucose'],\
-            request.form['BloodPressure'],request.form['SkinThickness'],request.form['Insulin'],request.form['BMI'],request.form['DiabetesPedigreeFunction'],request.form['Age']]])))
-
-        return render_template('diagnose.html', result=result)
-    return render_template('diagnose.html')
+        diabetes_result  = diabetes_model.predict(diabetes_scaler.transform([[form_data['Pregnancies'],form_data['Glucose'],\
+            form_data['BloodPressure'],form_data['SkinThickness'],form_data['Insulin'],form_data['BMI'],\
+            form_data['DiabetesPedigreeFunction'],form_data['Age']]]))[0]
+    return render_template('diagnose.html',diabetes_result=diabetes_result)
 
 @app.route('/howitworks')
 def howthisworks():
