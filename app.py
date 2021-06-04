@@ -5,15 +5,21 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, accuracy_score
 from pickle import dump, load
+#from tensorflow import lite
+#from tensorflow import keras
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+#import tensorflow as tf
+
 
 #creating an app
 app = Flask(__name__)
 
 diabetes_model = load(open('diabetes_model.pkl', 'rb'))
 diabetes_scaler = load(open('diabetes_scaler.pkl', 'rb'))
+#retinopathy_model = load_model("Retinopathy_model_trained_20-40-40.h5")
+
 #Homepage
 @app.route('/')
 def home_page():
@@ -22,13 +28,16 @@ def home_page():
 @app.route('/diagnose', methods = ['POST', 'GET'])
 def diagnose():
     diabetes_result = 2
+    retinopathy_result = 2
     if request.method == 'POST':
         form_data = request.form
         #Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age
         diabetes_result  = diabetes_model.predict(diabetes_scaler.transform([[form_data['Pregnancies'],form_data['Glucose'],\
             form_data['BloodPressure'],form_data['SkinThickness'],form_data['Insulin'],form_data['BMI'],\
             form_data['DiabetesPedigreeFunction'],form_data['Age']]]))[0]
-    return render_template('diagnose.html',diabetes_result=diabetes_result)
+        #select the images
+        #retinopathy_result = retinopathy_model.predict_classes(form_data)
+    return render_template('diagnose.html',diabetes_result=diabetes_result)#, retinopathy_result=retinopathy_result)
 
 @app.route('/howitworks')
 def howthisworks():
