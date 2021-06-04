@@ -1,12 +1,19 @@
 #import dependencies
 from flask import Flask, render_template, redirect, request
-
-import os
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix, accuracy_score
+from pickle import dump, load
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
 
 #creating an app
 app = Flask(__name__)
 
-
+diabetes_model = load(open('diabetes_model.pkl', 'rb'))
+diabetes_scaler = load(open('diabetes_scaler.pkl', 'rb'))
 #Homepage
 @app.route('/')
 def home_page():
@@ -16,9 +23,11 @@ def home_page():
 def diagnose():
     if request.method == 'POST':
         form_data = request.form
-        #here take form data , clean it up, pass it through the two models
-        #result = responses from models
-        return render_template('diagnose.html', result=True)
+        #Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age
+        result  = bool(diabetes_model.predict(diabetes_scaler.transform([[request.form['Pregnancies'],request.form['Glucose'],\
+            request.form['BloodPressure'],request.form['SkinThickness'],request.form['Insulin'],request.form['BMI'],request.form['DiabetesPedigreeFunction'],request.form['Age']]])))
+
+        return render_template('diagnose.html', result=result)
     return render_template('diagnose.html')
 
 @app.route('/howitworks')
