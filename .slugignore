@@ -1,3 +1,6 @@
-Archive/
-Documentation/
+Archive/*
+Documentation/*
+*.docx
+*.xlsx
+*.pdf
 
