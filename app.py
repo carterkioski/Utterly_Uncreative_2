@@ -5,8 +5,6 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, accuracy_score
 from pickle import dump, load
-#from tensorflow import lite
-#from tensorflow import keras
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -14,10 +12,6 @@ import random, os
 import shutil
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.models import load_model
-
-#import tensorflow as tf
-
-
 #creating an app
 app = Flask(__name__)
 
@@ -70,7 +64,7 @@ def diagnose():
             shutil.rmtree(special_path)
         os.makedirs(special_path)
         #Copy images to respective working directory
-        src_dir = 'Data/Sample_Images/'
+        src_dir = 'static/img/'
         for index, row in special_df.iterrows():
             diagnosis = row['type']
             binary_diagnosis = row['binary_type']
