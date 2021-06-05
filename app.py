@@ -64,7 +64,7 @@ def diagnose():
             shutil.rmtree(special_path)
         os.makedirs(special_path)
         #Copy images to respective working directory
-        src_dir = 'static/img/'
+        src_dir = './static/img/'
         for index, row in special_df.iterrows():
             diagnosis = row['type']
             binary_diagnosis = row['binary_type']
