@@ -112,6 +112,7 @@
           <h2>Results:</h2>
           {% if diabetes_result < 2 %}
           <p>Our model predicts that you do {{(1-diabetes_result) * 'NOT'}} have diabetis!</p>
+          <p>The eye you selected indicates a condition of {{retinopathy_result}} diabetic retinopathy</p>
           {% endif %}
         </div>
         <script>document.write(diabetes_result)</script>
