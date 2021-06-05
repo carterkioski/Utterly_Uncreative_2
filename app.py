@@ -15,8 +15,8 @@ from tensorflow.keras.models import load_model
 #creating an app
 app = Flask(__name__)
 
-diabetes_model = load(open('diabetes_model.pkl', 'rb'))
-diabetes_scaler = load(open('diabetes_scaler.pkl', 'rb'))
+diabetes_model = load(open('Code/Models/diabetes_model.pkl', 'rb'))
+diabetes_scaler = load(open('Code/Models/diabetes_scaler.pkl', 'rb'))
 retinopathy_model = load_model("Code/Models/Retinopathy_model_trained_20-40-40.h5")
 
 # setup for the retinal model
@@ -64,7 +64,7 @@ def diagnose():
             shutil.rmtree(special_path)
         os.makedirs(special_path)
         #Copy images to respective working directory
-        src_dir = './static/img/'
+        src_dir = 'static/img/'
         for index, row in special_df.iterrows():
             diagnosis = row['type']
             binary_diagnosis = row['binary_type']
