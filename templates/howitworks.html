@@ -46,7 +46,7 @@
     <div class="container py-12">
         <header class="pb-3 mb-4 border-bottom">
           <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-            <span class="fs-1 fw-bold  ">How this works... </span>
+            <span class="fs-1 fw-bold  ">How it works... </span>
           </a>
         </header>
     </div>
@@ -59,18 +59,18 @@
           <ol class="list-group list-group-numbered">
             <li class = "list-group-item fw-bold">Data Description</li>
             <br>
-            <p4>This dataset is originally from the National Institute of Diabetes and Digestive and Kidnet Diseases. We used the following 
+            <p4>This dataset is originally from the National Institute of Diabetes and Digestive and Kidney Diseases. We used the following 
               dataset to create models that predicts whether a patient has diabetes.</p4>
             <br>
             <p4>Columns Variable Explanation:</p4>
               <ul>
                 <li>Pregnancies: The number of times pregnant</li>
-                <li>Glucose: Plasma glucose concentration a 2 hours in an oral glucose tolerance test</li>
+                <li>Glucose: Plasma glucose concentration at 2 hours in an oral glucose tolerance test</li>
                 <li>Blood Pressure: Diastolic blood pressure (mmHg)</li>
-                <li>SkinThickness: Triceps skin fold thickness (mm)</li>
+                <li>Skin Thickness: Triceps skin fold thickness (mm)</li>
                 <li>Insulin: 2-Hour serum insulin (mu U/ml)</li>
                 <li>BMI: Body mass index (weight in kg/(height in m)^2)</li>
-                <li>DiabetesPedigreeFunction: Diabetes pedigree function</li>
+                <li>Diabetes Pedigree Function: Diabetes pedigree function scores likelihood of diabetes based on family history</li>
                 <li>Age: Age in years</li>
                 <li>Outcome: Class variable (0 or 1)</li>
               </ul>
@@ -78,7 +78,7 @@
               <p><a href="https://www.kaggle.com/mathchi/diabetes-data-set">Kaggle Dataset Source</a></p>
               <br>
             <li class="list-group-item fw-bold">Exploratory Data Analysis</li><br>
-            <p4>Pie charts: Grouped by Diabetes Outcome (0 = negative 1 = positive)</p4>
+            <p4>Pie charts: Variable Means Grouped by Diabetes Outcome (0 = negative 1 = positive). The means for positive diagnosis patients are higher than the general population.</p4>
             <div class="row">
               <div class="column">
                 <img src="./static/img/fig1.png" alt="BMI" style="width:100%">
@@ -102,7 +102,7 @@
                 <img src="./static/img/fig4.png" alt="pregnancies" style="width:100%">
               </div>
             </div>
-            <li class="list-group-item fw-bold">Mechine Learning Analysis</li>
+            <li class="list-group-item fw-bold">Machine Learning Analysis</li>
             
           </ol>
         </div>
@@ -115,7 +115,7 @@
             <li class="list-group-item fw-bold">Data Description</li>
             <br>
             <p4>The images consist of gaussian filtered retina scan images to detect diabetic retinopathy. The original dataset is available at APTOS 2019 Blindness Detection. All the images are resized
-              into 224x224 pixles. We used those image to trained models to predic Diabetic Retinopathy.
+              into 224x224 pixels. We used these image to train deep learning convolutional neural network (CNN) models to predict Diabetic Retinopathy.
             </p4>
             <br>
             <p4>The five directories with the respective images:</p4>
@@ -129,10 +129,42 @@
               <br>
               <p><a href="https://www.kaggle.com/sovitrath/diabetic-retinopathy-224x224-gaussian-filtered">Kaggle Dataset Source</a></p>
               <br>
-            <li class="list-group-item fw-bold">Exploratory Data Analysis</li><br>
+            <li class="list-group-item fw-bold">Data and Set up</li><br>
             
-            <li class="list-group-item fw-bold">Mechine Learning Analysis</li>
-            
+            <div class="row">
+              <div class="column">
+                <img src="./static/img/Purpose.jpg" alt="Camera" style="width:100%">
+              </div>
+              <div class="column">
+                <img src="./static/img/Fundus_Camera.jpg" alt="Camera" style="width:100%">
+              </div>
+              <div class="column">
+                <img src="./static/img/Normal_eyes.jpg" alt="Normal" style="width:100%">
+              </div>
+              <div class="column">
+                <img src="./static/img/Proliferate.png" alt="Proliferate" style="width:100%">
+              </div>
+            </div>
+
+            <li class="list-group-item fw-bold">Machine Learning Analysis - Model and Performance</li>
+            <div class="row">
+              <div class="column">
+                <img src="./static/img/Model-1.png" alt="CNN-1" style="width:100%">
+              </div>
+              <div class="column">
+                <img src="./static/img/Model-2.png" alt="CNN-2" style="width:100%">
+              </div>
+              <div class="column">
+                <img src="./static/img/plot_1_SC.png" alt="Accuracy" style="width:100%">
+              </div>
+              <div class="column">
+                <img src="./static/img/plot_2_SC.png" alt="Loss" style="width:100%">
+              </div>
+            </div>
+
+
+
+
           </ol>
         </div>
       </div>
