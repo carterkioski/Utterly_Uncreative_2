@@ -86,7 +86,7 @@ def diagnose():
         return render_template('diagnose.html',diabetes_result=diabetes_result,age1 = form_data['Age'], 
             bmi1 = form_data['BMI'],skin1 = form_data['SkinThickness'], ins1 = form_data['Insulin'],
             glu1 = form_data['Glucose'], bp1 = form_data['BloodPressure'], dpf1 = form_data['DiabetesPedigreeFunction'],
-            preg1 = form_data['Pregnancies'],retinopathy_result=retinopathy_result[0])
+            preg1 = form_data['Pregnancies'],retinopathy_result=retinopathy_result[0].lower())
     return render_template('diagnose.html',diabetes_result=diabetes_result,retinopathy_result=retinopathy_result)
     
 @app.route('/howitworks')
