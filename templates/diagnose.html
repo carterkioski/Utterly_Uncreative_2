@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
     
     <title>Diabetes Diagnosis Center</title>
   </head>
@@ -59,7 +59,7 @@
         <div class="col-md-8"><h4>Plese fill in the following information for a diagnose</h4>
           <div class="row">
           <form class="row g-3" action="/diagnose" method = "POST">
-            <div class="col-md-9">
+            <!-- <div class="col-md-9"> -->
             <div class="input-group mb-3">
               <span class="input-group-text" id="inputGroup-sizing-default">Age</span>
               <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="Age" value=0>
@@ -85,7 +85,7 @@
               <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="BloodPressure" value=0>
             </div>
             <div class="input-group mb-3">
-              <span class="input-group-text" id="inputGroup-sizing-default">DiabetesPedigreeFunction</span>
+              <span class="input-group-text" id="inputGroup-sizing-default">Diabetes Pedigree Function</span>
               <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="DiabetesPedigreeFunction" value=0>
             </div>
             <div class="input-group mb-3">
@@ -100,11 +100,21 @@
       </div>
         <div class="col-md-4">
           <br>
+          <h2>Information you Input:</h2><br>
+          <p>Age: {{ age1 }}</p>
+          <p>BMI: {{ bmi1 }}</p>
+          <p>Skin Thickness: {{ skin1 }}</p>
+          <p>Insulin: {{ ins1 }}</p>
+          <p>Glucose: {{ glu1 }}</p>
+          <p>Blood Pressure: {{ bp1 }}</p>
+          <p>Diabetes Pedigree Function: {{ dpf1 }}</p>
+          <p>Pregnancies: {{ preg1 }}</p>
           <h2>Results:</h2>
           {% if diabetes_result < 2 %}
           <p>Our model predicts that you do {{(1-diabetes_result) * 'NOT'}} have diabetis!</p>
           {% endif %}
         </div>
+        <script>document.write(diabetes_result)</script>
       </div>
     </div>
         

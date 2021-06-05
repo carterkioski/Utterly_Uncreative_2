@@ -37,7 +37,10 @@ def diagnose():
             form_data['DiabetesPedigreeFunction'],form_data['Age']]]))[0]
         #select the images
         #retinopathy_result = retinopathy_model.predict_classes(form_data)
-    return render_template('diagnose.html',diabetes_result=diabetes_result)#, retinopathy_result=retinopathy_result)
+    return render_template('diagnose.html',diabetes_result=diabetes_result,age1 = form_data['Age'], 
+    bmi1 = form_data['BMI'],skin1 = form_data['SkinThickness'], ins1 = form_data['Insulin'],
+    glu1 = form_data['Glucose'], bp1 = form_data['BloodPressure'], dpf1 = form_data['DiabetesPedigreeFunction'],
+    preg1 = form_data['Pregnancies'] )#, retinopathy_result=retinopathy_result)
 
 @app.route('/howitworks')
 def howthisworks():
