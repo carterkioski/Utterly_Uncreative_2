@@ -63,7 +63,7 @@ def diagnose():
             form_data['BloodPressure'],form_data['SkinThickness'],form_data['Insulin'],form_data['BMI'],\
             form_data['DiabetesPedigreeFunction'],form_data['Age']]]))[0]
         #select the images
-        special = int(form_data['retina'])
+        special = [int(form_data['retina'])]
         special_df=Image_info_df.loc[special]
         # Create working directories for the image_file
         if os.path.exists(special_path):
