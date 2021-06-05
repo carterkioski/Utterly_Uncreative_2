@@ -76,7 +76,7 @@ def diagnose():
             binary_diagnosis = row['binary_type']
             id_code = row['id_code'] + ".png"
             srcfile = os.path.join(src_dir, diagnosis, id_code)
-            dstfile = os.path.join(special_dir, diagnosis)
+            dstfile = os.path.join(special_path, diagnosis)
             os.makedirs(dstfile, exist_ok = True)
             shutil.copy(srcfile, dstfile)
 
