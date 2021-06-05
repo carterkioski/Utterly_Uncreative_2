@@ -6,4 +6,4 @@ cloudpickle==1.6.0
 pickleshare==0.7.5
 matplotlib==3.3.4
 pandas==1.2.4
-tensorflow==2.5.0
+tensorflow-cpu==2.5.0
