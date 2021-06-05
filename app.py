@@ -46,10 +46,6 @@ diagnosis_dict = {
 Image_info_df['binary_type'] =  Image_info_df['diagnosis'].map(diagnosis_dict_binary.get)
 Image_info_df['type'] = Image_info_df['diagnosis'].map(diagnosis_dict.get)
 
-
-#retinopathy_model = load_model("Retinopathy_model_trained_20-40-40.h5")
-
-
 #Homepage
 @app.route('/')
 def home_page():
@@ -60,26 +56,20 @@ def diagnose():
     diabetes_result = 2
     retinopathy_result = 2
     if request.method == 'POST':
+        special_path = 'Special'
         form_data = request.form
         #Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age
         diabetes_result  = diabetes_model.predict(diabetes_scaler.transform([[form_data['Pregnancies'],form_data['Glucose'],\
             form_data['BloodPressure'],form_data['SkinThickness'],form_data['Insulin'],form_data['BMI'],\
             form_data['DiabetesPedigreeFunction'],form_data['Age']]]))[0]
         #select the images
-        special = [190]         
+        special = form_data['retina']
         special_df=Image_info_df.loc[special]
         # Create working directories for the image_file
-        base_dir = ''
-
-        special_dir = os.path.join(base_dir, 'Special')
-
-        if os.path.exists(base_dir):
-            shutil.rmtree(base_dir)
-
-        if os.path.exists(special_dir):
-            shutil.rmtree(special_dir)
-        os.makedirs(special_dir)
-        # # Copy images to respective working directory
+        if os.path.exists(special_path):
+            shutil.rmtree(special_path)
+        os.makedirs(special_path)
+        #Copy images to respective working directory
         src_dir = 'Data/Sample_Images/'
         for index, row in special_df.iterrows():
             diagnosis = row['type']
@@ -89,7 +79,7 @@ def diagnose():
             dstfile = os.path.join(special_dir, diagnosis)
             os.makedirs(dstfile, exist_ok = True)
             shutil.copy(srcfile, dstfile)
-            special_path = 'Special'
+
 
         Diagnosis = ImageDataGenerator(rescale = 1./255).flow_from_directory(special_path, target_size=(224,224), shuffle = True)
 
@@ -97,22 +87,13 @@ def diagnose():
         predicted = np.argmax(predicted,axis=1)
 
         # Map the label
-        # labels = (Diagnosis.class_indices)
-        # labels = dict((v,k) for k,v in labels.items())
         Labels = {0: 'Mild', 1: 'Moderate', 2: 'No_DR', 3: 'Proliferate_DR', 4: 'Severe'}
-        predicted = [Labels[k] for k in predicted]
-    
-        #retinopathy_result = retinopathy_model.predict_classes(form_data)
-        
-        
-        
-        
-        
+        retinopathy_result = [Labels[k] for k in predicted]
         return render_template('diagnose.html',diabetes_result=diabetes_result,age1 = form_data['Age'], 
-        bmi1 = form_data['BMI'],skin1 = form_data['SkinThickness'], ins1 = form_data['Insulin'],
-        glu1 = form_data['Glucose'], bp1 = form_data['BloodPressure'], dpf1 = form_data['DiabetesPedigreeFunction'],
-        preg1 = form_data['Pregnancies'],retinopathy_result=predicted[:1][0])
-    return render_template('diagnose.html',diabetes_result=diabetes_result,retinopathy_result=1)
+            bmi1 = form_data['BMI'],skin1 = form_data['SkinThickness'], ins1 = form_data['Insulin'],
+            glu1 = form_data['Glucose'], bp1 = form_data['BloodPressure'], dpf1 = form_data['DiabetesPedigreeFunction'],
+            preg1 = form_data['Pregnancies'],retinopathy_result=retinopathy_result[0][0])
+    return render_template('diagnose.html',diabetes_result=diabetes_result,retinopathy_result=retinopathy_result)
     
 @app.route('/howitworks')
 def howthisworks():
