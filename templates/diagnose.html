@@ -62,7 +62,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8">
-        <h5>To receive a sample diagnosis please: 
+        <h5>Please do the following to receive a sample diagnosis:  
           <br>
           <br>
               1) Complete the survey <br> 
@@ -205,7 +205,7 @@
         <p>Pregnancies: {{ preg1 }}</p>
         <h2>Results:</h2>
         {% if diabetes_result < 2 %}
-        <p>Our model predicts that you do {{(1-diabetes_result) * 'NOT'}} have diabetis!</p>
+        <p>Our model predicts that you do {{(1-diabetes_result) * 'NOT'}} have diabetes!</p>
         <p>The eye you selected indicates a condition of {{retinopathy_result}} diabetic retinopathy</p>
         {% endif %}
       </div>
